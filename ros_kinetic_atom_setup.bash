@@ -54,3 +54,7 @@ sudo systemctl start ssh.socket
 sudo cp ~/catkin_ws/src/vendbot/rosmower/rosmower.service /etc/systemd/system/rosmower.service
 sudo systemctl start rosmower
 
+# Ensure Zeroconf is working
+sudo apt-get install -y avahi-daemon avahi-utils
+avahi-resolve -n `hostname`.local
+# If that doesn't work, try: `tcpdump -i wlan0 port 5353`
