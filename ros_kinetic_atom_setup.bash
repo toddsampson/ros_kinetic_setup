@@ -19,7 +19,7 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 echo $ROS_PACKAGE_PATH
 
-sudo apt-get install -y arduino ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-server openssh-server upstart vim
+sudo apt-get install -y arduino ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-server ros-kinetc-rosbridge-server openssh-server upstart vim
 mkdir -p ~/sketchbook/libraries && cd ~/sketchbook/libraries && rosrun rosserial_arduino make_libraries.py .
 source ~/.bashrc
 
