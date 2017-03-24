@@ -43,8 +43,7 @@ sudo udevadm trigger
 
 # Install PlatformIO and Setup Arduino Mega
 pip install --upgrade pip
-pip install -U platformio
-platformio init --board megaatmega2560
+sudo pip install -U platformio
 cd ~/catkin_ws/src/vendbot/arduino/platformio
 platformio run --target upload
 
