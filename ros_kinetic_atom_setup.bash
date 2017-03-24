@@ -50,8 +50,9 @@ platformio run --target upload
 # Install OpenSSH Server
 sudo systemctl start ssh.socket
 
-# Setup Rowmower Systemd Service
+# Setup Rosmower Systemd Service
 sudo cp ~/catkin_ws/src/vendbot/rosmower/rosmower.service /etc/systemd/system/rosmower.service
+env > ~/catkin_ws/src/vendbot/launch/bash.env
 sudo systemctl start rosmower
 
 # Ensure Zeroconf is working
