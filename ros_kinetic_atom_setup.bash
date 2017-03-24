@@ -19,7 +19,7 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 echo $ROS_PACKAGE_PATH
 
-sudo apt-get install -y arduino ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-server ros-kinetc-rosbridge-server openssh-server upstart vim
+sudo apt-get install -y arduino ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-server ros-kinetc-rosbridge-server openssh-server vim
 mkdir -p ~/sketchbook/libraries && cd ~/sketchbook/libraries && rosrun rosserial_arduino make_libraries.py .
 source ~/.bashrc
 
@@ -48,10 +48,9 @@ cd ~/catkin_ws/src/vendbot/arduino/platformio
 platformio run --target upload
 
 # Install OpenSSH Server
-sudo service ssh start
+sudo systemctl start ssh.socket
 
-# Install and Configure Upstart
-sudo cp ~/catkin_ws/src/vendbot/upstart/rosmower.conf /etc/init/rosmower.conf
-sudo service rosmower start
+# Setup Rowmower Systemd Service
+sudo cp ~/catkin_ws/src/vendbot/rosmower/rosmower.service /etc/systemd/system/rosmower.service
+sudo systemctl start rosmower
 
-echo "Please reboot"
