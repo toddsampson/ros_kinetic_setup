@@ -36,7 +36,7 @@ SUBSYSTEM=="usb", KERNEL=="ttyACM[0-9]*", ATTRS{idProduct}=="6001", ATTRS{idVend
 SUBSYSTEM=="usb", KERNEL=="ttyACM[0-9]*", ATTRS{idProduct}=="2341", ATTRS{idVendor}=="8041", GROUP="dialout"
 SUBSYSTEM=="usb", KERNEL=="ttyACM[0-9]*", ATTRS{idProduct}=="2341", ATTRS{idVendor}=="0044", GROUP="dialout"
 ATTRS{idVendor}=="2a03", ENV{ID_MM_DEVICE_IGNORE}="1"
-SUBSYSTEM=="tty", ATTRS{idProduct}=="0042", SYMLINK+=“arduinomega"
+SUBSYSTEM=="tty", ATTRS{idProduct}=="0042", SYMLINK+="arduinomega"
 EDF
 sudo cp ~/catkin_ws/src/vendbot/arduino/platformio/99-platformio-udev.rules /etc/udev/rules.d/
 sudo udevadm trigger
