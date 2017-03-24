@@ -45,7 +45,7 @@ sudo udevadm trigger
 pip install --upgrade pip
 sudo pip install -U platformio
 cd ~/catkin_ws/src/vendbot/arduino/platformio
-platformio run --target upload
+sudo platformio run --target upload
 
 # Install OpenSSH Server
 sudo systemctl start ssh.socket
@@ -57,5 +57,5 @@ sudo systemctl start rosmower
 
 # Ensure Zeroconf is working
 sudo apt-get install -y avahi-daemon avahi-utils
-avahi-resolve -n `hostname`.local
-# If that doesn't work, try: `tcpdump -i wlan0 port 5353`
+sudo avahi-resolve -n `hostname`.local
+# If that doesn't work, try: `sudo tcpdump -i wlan0 port 5353`
