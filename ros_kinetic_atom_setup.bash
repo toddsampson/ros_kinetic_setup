@@ -48,11 +48,14 @@ cd ~/catkin_ws/src/vendbot/arduino/platformio
 sudo platformio run --target upload
 
 # Install OpenSSH Server
-sudo systemctl start ssh.socket
+sudo systemctl start ssh
+sudo systemctl enable ssh
 
 # Setup Rosmower Systemd Service
 sudo cp ~/catkin_ws/src/vendbot/rosmower/rosmower.service /etc/systemd/system/rosmower.service
 env > ~/catkin_ws/src/vendbot/launch/bash.env
+sudo systemctl daemon-reload
+sudo systemctl enable rosmower
 sudo systemctl start rosmower
 
 # Ensure Zeroconf is working
