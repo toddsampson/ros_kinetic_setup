@@ -48,10 +48,10 @@ cd ~/catkin_ws/src/vendbot/arduino/platformio
 platformio run --target upload
 
 # Install OpenSSH Server
-service ssh start
+sudo service ssh start
 
 # Install and Configure Upstart
 sudo cp ~/catkin_ws/src/vendbot/upstart/rosmower.conf /etc/init/rosmower.conf
-service rosmower start
+sudo service rosmower start
 
 echo "Please reboot"
