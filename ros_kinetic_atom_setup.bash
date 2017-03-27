@@ -58,11 +58,11 @@ sudo systemctl daemon-reload
 sudo systemctl enable rosmower
 sudo systemctl start rosmower
 
-# Ensure Zeroconf is Working
-sudo apt-get install -y avahi-daemon avahi-utils
-sudo avahi-resolve -n `hostname`.local
-# If that doesn't work, try: `sudo tcpdump -i wlan0 port 5353`
-
 # Lighttpd Web Server Setup
 sudo cp -R ~/catkin_ws/src/vendbot/web_server/* /var/www/html/
 sudo sed -i s/mower1/`hostname`/ /var/www/html/index.html
+
+# Ensure Zeroconf is Working
+sudo apt-get install -y avahi-daemon avahi-utils
+sudo avahi-resolve -n `hostname`.local
+sudo tcpdump -c 3 -i wlan0 port 5353
