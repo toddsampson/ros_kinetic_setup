@@ -19,7 +19,7 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 echo $ROS_PACKAGE_PATH
 
-sudo apt-get install -y arduino ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-server ros-kinetic-rosbridge-server openssh-server vim
+sudo apt-get install -y arduino ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-server ros-kinetic-rosbridge-server openssh-server vim lighttpd
 mkdir -p ~/sketchbook/libraries && cd ~/sketchbook/libraries && rosrun rosserial_arduino make_libraries.py .
 source ~/.bashrc
 
@@ -58,7 +58,11 @@ sudo systemctl daemon-reload
 sudo systemctl enable rosmower
 sudo systemctl start rosmower
 
-# Ensure Zeroconf is working
+# Ensure Zeroconf is Working
 sudo apt-get install -y avahi-daemon avahi-utils
 sudo avahi-resolve -n `hostname`.local
 # If that doesn't work, try: `sudo tcpdump -i wlan0 port 5353`
+
+# Lighttpd Web Server Setup
+sudo cp -R ~/catkin_ws/src/vendbot/web_server/* /var/www/html/
+sudo sed -i s/mower1/`hostname`/ /var/www/html/index.html
